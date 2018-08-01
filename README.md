@@ -1,6 +1,5 @@
-# 2018
-SQLGrillen 2018
+# SQLGrillen
 
-The repository for SQLGrillen 2018 speaker slides/content
+The repository for SQLGrillen speaker slides/content
 
-See https://sqlgrillen.de for more details
+See https://sqlgrillen.de for more details about what SQLGrillen is
