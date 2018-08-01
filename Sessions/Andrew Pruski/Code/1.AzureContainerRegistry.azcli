@@ -1,0 +1,67 @@
+# check azure-cli is installed
+az --version
+
+
+
+# log in to azure
+az login
+
+
+
+# create a resource group
+az group create --name containers1 --location eastus
+
+
+
+# create registry
+az acr create --resource-group containers1 --name TestContainerRegistry01 --sku Basic
+
+
+
+# log into registry
+az acr login --name TestContainerRegistry01
+
+
+
+# find fully qualified name of registry login server
+az acr list --resource-group containers1 --query "[].{acrLoginServer:loginServer}" --output table
+
+
+
+# list local docker images
+docker images
+
+
+
+# build custom image
+docker build -t testimage C:\git\dbafromthecold\ContainersInTheCloud\Code
+
+
+
+# tag local image with ACR name
+docker tag testimage TestContainerRegistry01.azurecr.io/devsqlimage:latest
+
+
+
+# push image to registry
+docker push TestContainerRegistry01.azurecr.io/devsqlimage:latest
+
+
+
+# list repositories in registry
+az acr repository list --name TestContainerRegistry01 --output table
+
+
+
+# show tags in repository
+az acr repository show-tags --name TestContainerRegistry01 --repository devsqlimage
+
+
+
+# pull out a bit more information about images
+az acr repository show-manifests --name TestContainerRegistry01 --repository devsqlimage
+
+
+
+# remove image from the registry
+az acr repository delete --name TestContainerRegistry01 --repository devsqlimage

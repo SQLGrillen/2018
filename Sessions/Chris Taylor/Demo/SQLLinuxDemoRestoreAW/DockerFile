@@ -1,0 +1,14 @@
+FROM sqlgeordie/sqlonlinuxdemo:demo
+
+# Create sql script directory
+RUN mkdir -p /usr/src/sqlscript
+WORKDIR /usr/src/sqlscript
+
+# Bundle script source
+COPY ./shell /usr/src/sqlscript
+
+# Grant permissions for the import-data script to be executable
+RUN chmod +x /usr/src/sqlscript/restoredbs.sh
+# RUN chmod 755 /usr/src/sqlscript
+
+CMD /bin/bash ./entrypoint.sh

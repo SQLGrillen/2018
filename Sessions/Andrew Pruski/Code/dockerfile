@@ -1,0 +1,19 @@
+FROM microsoft/mssql-server-linux:latest
+
+
+RUN mkdir /var/opt/sqlserver
+
+
+COPY DatabaseA.mdf /var/opt/sqlserver
+COPY DatabaseA_log.ldf /var/opt/sqlserver
+
+
+ENV MSSQL_BACKUP_DIR="/var/opt/sqlserver"
+ENV MSSQL_DATA_DIR="/var/opt/sqlserver"
+ENV MSSQL_LOG_DIR="/var/opt/sqlserver"
+
+
+HEALTHCHECK --interval=10s  \
+CMD /opt/mssql/bin/sqlservr & \
+	/opt/mssql-tools/bin/sqlcmd -S . -U sa -P $SA_PASSWORD \
+		-Q "CREATE DATABASE [DatabaseA] ON (FILENAME = '/var/opt/sqlserver/DatabaseA.mdf'),(FILENAME = '/var/opt/sqlserver/DatabaseA_log.ldf') FOR ATTACH"

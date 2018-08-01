@@ -1,0 +1,131 @@
+# https://dbafromthecold.com/2017/11/15/running-sql-server-in-kubernetes-on-azure-container-services-aks-ii/
+
+
+
+# check azure-cli is installed
+az --version
+
+
+
+# log in to azure
+az login
+
+
+
+# enable flag on subscription to use AKS (as still in preview)
+az provider register -n Microsoft.ContainerService
+
+
+
+# confirm flag enabled
+az provider show -n Microsoft.ContainerService
+
+
+
+# create a resource group for all objects
+az group create --name containers1 --location eastus
+
+
+
+# create kubernetes cluster (with 2 nodes)
+az aks create --resource-group containers1 --name mySQLK8sCluster1 --node-count 2 --generate-ssh-keys
+
+
+
+# install kubectl
+az aks install-cli
+
+
+
+# get credentials to connect to cluster
+az aks get-credentials --resource-group containers1 --name mySQLK8sCluster1
+
+
+
+# confirm connection to cluster by viewing nodes
+kubectl get nodes
+
+
+
+# Get client ID
+az aks show --resource-group containers1 --name mySQLK8sCluster1 --query "servicePrincipalProfile.clientId" --output tsv
+
+
+
+# Get ACR ID
+az acr show --name TestContainerRegistry01 --resource-group containers1 --query "id" --output tsv
+
+
+
+# Create role to allow deployments
+az role assignment create --assignee <<CLIENTID>> --role Reader --scope <<ACRID>>
+
+
+
+# create yaml file for deployment
+echo 'apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: sqlserver
+  labels:
+    app: sqlserver
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: sqlserver
+    spec:
+      containers:
+      - name: sqlserver1
+        image: testcontainerregistry01.azurecr.io/devsqlimage:latest
+        ports:
+        - containerPort: 1433
+        env:
+        - name: SA_PASSWORD
+          value: "Testing1122"
+        - name: ACCEPT_EULA
+          value: "Y"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sqlserver-service
+spec:
+  ports:
+  - name: sqlserver
+    port: 1433
+    targetPort: 1433
+  selector:
+    name: sqlserver
+  type: LoadBalancer' > sqlserver.yml
+
+
+
+# deploy to cluster
+kubectl create -f sqlserver.yml
+
+
+
+# view deployment
+kubectl get deployments
+
+
+
+# view pods
+kubectl get pods
+
+
+
+# view service
+kubectl get service
+
+
+
+# view dashboard
+az aks browse --resource-group containers1 --name mySQLK8sCluster1
+
+
+
+# delete resource group
+az group delete --name containers1

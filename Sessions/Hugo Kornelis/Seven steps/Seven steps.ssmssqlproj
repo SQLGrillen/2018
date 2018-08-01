@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Seven steps">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="DESKTOP-TPGET62\SQL2017:DESKTOP-TPGET62\hugo">
+          <Created>2018-06-22T09:29:23.6933041+02:00</Created>
+          <Type>SQL</Type>
+          <Server>DESKTOP-TPGET62\SQL2017</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="0. Prepare database.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-TPGET62\SQL2017:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-TPGET62\SQL2017</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>0. Prepare database.sql</FullPath>
+        </FileNode>
+        <FileNode Name="1a. Cursor.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-TPGET62\SQL2017:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-TPGET62\SQL2017</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>1a. Cursor.sql</FullPath>
+        </FileNode>
+        <FileNode Name="1b. Cursor (alternative).sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-TPGET62\SQL2017:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-TPGET62\SQL2017</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>1b. Cursor (alternative).sql</FullPath>
+        </FileNode>
+        <FileNode Name="1c. Set-based.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-TPGET62\SQL2017:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-TPGET62\SQL2017</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>1c. Set-based.sql</FullPath>
+        </FileNode>
+        <FileNode Name="2. Index.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-TPGET62\SQL2017:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-TPGET62\SQL2017</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>2. Index.sql</FullPath>
+        </FileNode>
+        <FileNode Name="3. Sargable.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-TPGET62\SQL2017:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-TPGET62\SQL2017</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>3. Sargable.sql</FullPath>
+        </FileNode>
+        <FileNode Name="3a. Conversion.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-TPGET62\SQL2017:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-TPGET62\SQL2017</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>3a. Conversion.sql</FullPath>
+        </FileNode>
+        <FileNode Name="4. Covering index.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-TPGET62\SQL2017:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-TPGET62\SQL2017</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>4. Covering index.sql</FullPath>
+        </FileNode>
+        <FileNode Name="4a. Overindexing.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-TPGET62\SQL2017:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-TPGET62\SQL2017</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>4a. Overindexing.sql</FullPath>
+        </FileNode>
+        <FileNode Name="5. Parameter sniffing.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-TPGET62\SQL2017:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-TPGET62\SQL2017</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>5. Parameter sniffing.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

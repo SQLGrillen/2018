@@ -1,0 +1,9 @@
+Select 
+session_user_name, 
+session_current_database,
+session_last_command, 
+session_last_command_start_time, 
+session_last_command_end_time,
+session_last_command_elapsed_time_ms/1000 as duration_sec, 
+* from $System.discover_sessions
+order by session_last_command_elapsed_time_ms desc

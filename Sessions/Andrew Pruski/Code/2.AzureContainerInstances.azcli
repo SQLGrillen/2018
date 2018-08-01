@@ -1,0 +1,83 @@
+# check azure-cli is installed
+az --version
+
+
+
+# log in to azure
+az login
+
+
+
+# list registries under resource group
+az acr list --resource-group containers1
+
+
+
+# Enable admin on registry
+az acr update -n TestContainerRegistry01 --admin-enabled true
+
+# Get credentials
+az acr credential show -n TestContainerRegistry01
+
+
+
+# create keyvault
+az keyvault create --resource-group containers1 --name aptestkeyvault01
+
+
+# store password in keyvault
+az keyvault secret set `
+  --vault-name aptestkeyvault01 `
+  --name testcontainerregistry01-pull-pwd `
+  --value $(az ad sp create-for-rbac `
+  			--name testcontainerregistry01-pull `
+  			--scopes $(az acr show --name testcontainerregistry01 --query id --output tsv) `
+  			--role reader `
+  			--query password `
+  			--output tsv)
+
+
+
+# store username in keyvault
+az keyvault secret set `
+  --vault-name aptestkeyvault01 `
+  --name testcontainerregistry01-pull-usr `
+  --value $(az ad sp show `
+  		--id http://testcontainerregistry01-pull --query appId --output tsv)
+
+
+
+# drop credentials into script and create container
+az container create `
+    --resource-group containers1 `
+    --image testcontainerregistry01.azurecr.io/devsqlimage:latest `
+	--registry-username $(az keyvault secret show `
+						--vault-name aptestkeyvault01 `
+						--name testcontainerregistry01-pull-usr `
+						--query value --output tsv) `
+	--registry-password $(az keyvault secret show `
+						--vault-name aptestkeyvault01 `
+						--name testcontainerregistry01-pull-pwd `
+						--query value --output tsv) `
+	--name testcontainer1 `
+	--cpu 2 --memory 4 `
+	--environment-variables ACCEPT_EULA=Y SA_PASSWORD=Testing1122 `
+	--ip-address public `
+	--ports 1433
+						
+
+
+# confirm container created
+az container show --name testcontainer1 --resource-group containers1
+
+
+
+# get container logs
+az container logs --name testcontainer1 --resource-group containers1
+
+
+
+
+# delete container
+az container delete --name testcontainer1 --resource-group containers1
+

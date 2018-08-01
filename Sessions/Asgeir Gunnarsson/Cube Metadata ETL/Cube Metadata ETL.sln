@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Cube Metadata ETL", "Cube Metadata ETL\Cube Metadata ETL.dtproj", "{C54C3A1C-EA49-4246-ACF4-D41F17801E0A}"
+EndProject
+Global
+	GlobalSection(VaultVsipSolution-v2) = preSolution
+		VaultHost = http://oc1-sgvault-01.ossur.net/VaultService
+		VaultRepositoryID = 12
+		VaultRepositoryGUID = b6a7f6bc-53ef-4892-a803-d7cde5aeed2f
+		ProjectCount = 1
+		ProjectRelativeDiskPath1 = Cube Metadata ETL\Cube Metadata ETL.dtproj
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C54C3A1C-EA49-4246-ACF4-D41F17801E0A}.Development|Default.ActiveCfg = Development
+		{C54C3A1C-EA49-4246-ACF4-D41F17801E0A}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

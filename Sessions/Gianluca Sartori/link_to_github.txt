@@ -1,0 +1,3 @@
+Please find slides and demos of my session on GitHub:
+
+https://github.com/spaghettidba/CodeSamples/tree/master/RespondingToExtendedEvents
